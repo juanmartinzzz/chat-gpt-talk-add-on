@@ -1,6 +1,19 @@
-/* .prose {
-    border: 4px dotted blue;
-} */
+/* container */
+#chatGptTalkContainer {
+    position: absolute;
+    right: 0;
+    border: 2px dotted red;
+    z-index: 99999;
+}
+
+/* configuration */
+#chatGptTalkVoicesSelect {
+    width: 50px;
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+/* paragraphs */
 .prose p {
     padding: 4px 16px;
 }
@@ -13,12 +26,4 @@
     /* border:  2px dotted red; */
     background-color: rgba(0,0,0, 0.5);
     border-radius: 4px;
-}
-
-/*
-configuration
-*/
-#voicesSelect {
-    position: absolute;
-    z-index: 99999;
 }

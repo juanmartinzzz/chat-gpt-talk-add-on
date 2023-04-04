@@ -1,5 +1,11 @@
-const getVoicesSelect = () => {
-    const select = createElementWithAttributes({type: 'select', attributes: {id: 'voicesSelect'}});
+const addChatGptTalkContainer = () => {
+    const container = createElementWithAttributes({type: 'div', attributes: {id: elementIds.chatGptTalkContainer}});
+
+    document.getElementsByTagName('body')[0].prepend(container);
+}
+
+const addVoicesSelect = () => {
+    const select = createElementWithAttributes({type: 'select', attributes: {id: elementIds.voicesSelect}});
     
     const voices = window.speechSynthesis.getVoices();
 
@@ -12,9 +18,8 @@ const getVoicesSelect = () => {
 
     select.addEventListener('change', ({target}) => voiceId = target.value);
 
-    return select;
+    document.getElementById(elementIds.chatGptTalkContainer).appendChild(select);
 }
 
-// Add a select for the voice
-const voicesSelect = getVoicesSelect();
-document.getElementsByTagName('body')[0].appendChild(voicesSelect);
+addChatGptTalkContainer();
+addVoicesSelect();

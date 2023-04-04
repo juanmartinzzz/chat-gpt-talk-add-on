@@ -1,7 +1,4 @@
-let voiceId = 146;
-
 const readQueuedParagraphs = () => {
-    console.log({paragraphsToRead: state.paragraphsToRead});
     if(state.currentlyReading) {
         return;
     }
