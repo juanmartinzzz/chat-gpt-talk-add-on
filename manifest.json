@@ -1,0 +1,20 @@
+{
+    "content_scripts": [{
+        "js": [
+            "src/common/js/dom-manipulation.js",
+            "src/state.js",
+            "src/ui-elements.js",
+            "src/content-script.js"
+        ],
+        "css": ["src/content-script.css"],
+        "matches": ["https://chat.openai.com/*"]
+    }],
+    "description": "Speak results from ChatGPT",
+    "icons": {
+        "48": "src/icons/icon-48.jpg"
+    },
+    "manifest_version": 2,
+    "name": "TalkGPT",
+    "permissions": ["activeTab"],
+    "version": "1.0"
+}

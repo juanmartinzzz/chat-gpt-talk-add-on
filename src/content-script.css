@@ -1,0 +1,24 @@
+/* .prose {
+    border: 4px dotted blue;
+} */
+.prose p {
+    padding: 4px 16px;
+}
+.prose p.markedToBeRead {
+    /* border:  2px dotted red; */
+    background-color: rgba(0,0,0, 0.3);
+    border-radius: 4px;
+}
+.prose p.read {
+    /* border:  2px dotted red; */
+    background-color: rgba(0,0,0, 0.5);
+    border-radius: 4px;
+}
+
+/*
+configuration
+*/
+#voicesSelect {
+    position: absolute;
+    z-index: 99999;
+}
