@@ -1,4 +1,4 @@
-const readQueuedParagraphs = () => {
+const readQueuedParagraphs = async () => {
     if(state.currentlyReading) {
         return;
     }
@@ -14,7 +14,6 @@ const readQueuedParagraphs = () => {
     const text = state.paragraphsToRead[0].innerText;
     state.paragraphsToRead.shift();
 
-    // console.log({text});
     // Create a new instance of SpeechSynthesisUtterance
     const utterance = new SpeechSynthesisUtterance();
 
@@ -25,7 +24,7 @@ const readQueuedParagraphs = () => {
     utterance.rate = 0.87;
 
     // Set the voice to use for reading the text (optional)
-    utterance.voice = window.speechSynthesis.getVoices()[voiceId];
+    utterance.voice = window.speechSynthesis.getVoices()[(await browser.storage.local.get({voiceId: 146})).voiceId];
 
     // Inform the system that a paragraph is being read
     state.currentlyReading = true;

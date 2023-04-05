@@ -2,15 +2,30 @@
 #chatGptTalkContainer {
     position: absolute;
     right: 0;
-    border: 2px dotted red;
     z-index: 99999;
 }
 
-/* configuration */
+/* playing actions */
+#chatGptTalkPlayingActions {
+    display: none;
+}
+#chatGptTalkContainer.reading #chatGptTalkPlayingActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 #chatGptTalkVoicesSelect {
-    width: 50px;
+    width: 120px;
+    height: 15px;
     font-size: 10px;
     opacity: 0.5;
+}
+#chatGptTalkStopButton {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background-color: rgb(220, 0, 60);
+    border-radius: 99px;
 }
 
 /* paragraphs */
