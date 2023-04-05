@@ -4,7 +4,7 @@ const addChatGptTalkContainer = () => {
     document.getElementsByTagName('body')[0].prepend(container);
 }
 
-const addVoicesSelect = () => {
+const getVoicesSelect = () => {
     const select = createElementWithAttributes({type: 'select', attributes: {id: elementIds.voicesSelect}});
     
     const voices = window.speechSynthesis.getVoices();
@@ -16,10 +16,40 @@ const addVoicesSelect = () => {
         select.appendChild(option);
     })
 
-    select.addEventListener('change', ({target}) => voiceId = target.value);
+    select.addEventListener('change', ({target}) => browser.storage.local.set({voiceId: target.value}));
 
-    document.getElementById(elementIds.chatGptTalkContainer).appendChild(select);
+    return select;
+}
+
+const getStopButton = () => {
+    const stop = createElementWithAttributes({type: 'div', attributes: {id: elementIds.stopButton}});
+
+    stop.addEventListener('click', () => state.paragraphsToRead = [])
+
+    return stop;
+}
+
+const addPlayingActions = () => {
+    const actions = createElementWithAttributes({type: 'actions', attributes: {id: elementIds.playingActions}});
+    const voices = getVoicesSelect();
+    const stop = getStopButton();
+
+    actions.appendChild(voices);
+    actions.appendChild(stop);
+    document.getElementById(elementIds.chatGptTalkContainer).appendChild(actions);
+}
+
+const detectContainerClass = () => {
+    const container = document.getElementById(elementIds.chatGptTalkContainer);
+
+    if(state.currentlyReading) {
+        container.classList.add(containerReadingClass);
+    } else {
+        container.classList.remove(containerReadingClass);
+    }
 }
 
 addChatGptTalkContainer();
-addVoicesSelect();
+addPlayingActions();
+
+setInterval(detectContainerClass, 500);
